@@ -19,6 +19,7 @@ public class TranslationsService {
 
   public List<TranslationResponse> translationResponses(Integer pageNumber, Integer pageSize) {
 
+    // validate request
     validate(pageNumber, pageSize);
 
     int offset = (pageNumber - 1) * pageSize;
@@ -30,6 +31,10 @@ public class TranslationsService {
     return convert(translations);
   }
 
+  /**
+   * @param pageNumber Integer
+   * @param pageSize   Integer
+   */
   private void validate(Integer pageNumber, Integer pageSize) {
 
     if (pageNumber < 1) {
@@ -44,6 +49,10 @@ public class TranslationsService {
 
   }
 
+  /**
+   * @param translations List<Translations>.
+   * @return List<TranslationResponse>.
+   */
   private List<TranslationResponse> convert(List<Translations> translations) {
 
     List<TranslationResponse> responses = translations.stream().map(translation -> {

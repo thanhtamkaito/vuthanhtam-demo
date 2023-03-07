@@ -36,6 +36,9 @@ public class GenerateTranslationService {
 
     Map<Integer, String> listIdVie = new HashMap<>();
 
+    /**
+     *  Load the sentences  file  and get listIdEng, listIdVie
+     */
     try (BufferedReader br = new BufferedReader(
         new FileReader(SENTENCE_PATH))) {
 
@@ -68,7 +71,9 @@ public class GenerateTranslationService {
 
     }
 
-    // Load the sentences with audio file
+    /**
+     *  Load the sentences with audio file and get urlAudio
+     */
     Map<Integer, String> audioUrls = new HashMap<>();
 
     try (BufferedReader br = new BufferedReader(
@@ -90,14 +95,13 @@ public class GenerateTranslationService {
 
         audioUrls.put(id, audioUrl);
 
-
       }
     }
 
-    // Generate the translation file
+    /**
+     *  Generate the translation file
+     */
     try (PrintWriter pw = new PrintWriter(new FileWriter(OUTPUT_PATH))) {
-
-      //  pw.println("id_eng,text_eng,audio_url,id_vie,text_vie");
 
       try (BufferedReader br = new BufferedReader(
           new FileReader(LINKS_PATH))) {
@@ -109,6 +113,7 @@ public class GenerateTranslationService {
 
           int traslationId = Integer.parseInt(fields[1]);
 
+          // get audioUrl by idEng
           if (listIdEng.containsKey(idEng) && listIdVie.containsKey(traslationId)) {
 
             String audioUrl = audioUrls.get(idEng);
@@ -119,6 +124,7 @@ public class GenerateTranslationService {
               audioUrl = "https://audio.tatoeba.org/sentences/eng/" + idEng + ".mp3";
             }
 
+            // Write with format id_eng text_eng audio_url id_vie text_vie
             pw.printf("%d\t%s\t%s\t%d\t%s\n", idEng, listIdEng.get(idEng), audioUrl,
                 traslationId, listIdVie.get(traslationId));
           }

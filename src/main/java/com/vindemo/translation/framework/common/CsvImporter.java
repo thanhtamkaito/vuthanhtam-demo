@@ -25,6 +25,7 @@ public class CsvImporter {
 
     List<Translations> translationsList = new ArrayList<>();
 
+    // Load translation file
     try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
       String line;
       while ((line = br.readLine()) != null) {
@@ -40,8 +41,7 @@ public class CsvImporter {
         translation.setTextVie(fields[4]);
 
         translationsList.add(translation);
-
-//        translationRepository.save(translation);
+        
       }
     }
 

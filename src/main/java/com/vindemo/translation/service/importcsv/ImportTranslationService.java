@@ -11,10 +11,13 @@ public class ImportTranslationService {
   @Autowired
   CsvImporter csvImporter;
 
+  /**
+   * Excute Import csv to Postgres
+   */
   public void importCsv() {
     try {
       csvImporter.importCsv();
-      
+
     } catch (Exception e) {
       e.printStackTrace();
     }

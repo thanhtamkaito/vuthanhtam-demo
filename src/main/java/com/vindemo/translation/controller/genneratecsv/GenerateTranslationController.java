@@ -20,6 +20,6 @@ public class GenerateTranslationController {
 
     service.generateTranslation();
 
-    return ResponseEntity.ok().body("OK");
+    return ResponseEntity.ok().body("Translation file generated successfully");
   }
 }

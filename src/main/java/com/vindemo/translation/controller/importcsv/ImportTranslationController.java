@@ -20,6 +20,6 @@ public class ImportTranslationController {
 
     service.importCsv();
 
-    return ResponseEntity.ok().body("OK");
+    return ResponseEntity.ok().body("Import successfully");
   }
 }
