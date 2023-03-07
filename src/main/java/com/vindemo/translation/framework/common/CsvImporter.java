@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CsvImporter {
 
   @Value("${file.config.properties.translation}")
-  private static String CSV_FILE_PATH;
+  private String CSV_FILE_PATH;
 
   @Autowired
   private TranslationRepository translationRepository;
@@ -41,7 +41,7 @@ public class CsvImporter {
         translation.setTextVie(fields[4]);
 
         translationsList.add(translation);
-        
+
       }
     }
 
