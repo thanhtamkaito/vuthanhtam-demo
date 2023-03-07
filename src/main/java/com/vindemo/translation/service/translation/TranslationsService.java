@@ -3,6 +3,7 @@ package com.vindemo.translation.service.translation;
 
 import com.vindemo.translation.dto.response.TranslationResponse;
 import com.vindemo.translation.entity.Translations;
+import com.vindemo.translation.framework.exception.ValidateException;
 import com.vindemo.translation.repository.TranslationRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,6 +19,8 @@ public class TranslationsService {
 
   public List<TranslationResponse> translationResponses(Integer pageNumber, Integer pageSize) {
 
+    validate(pageNumber, pageSize);
+
     int offset = (pageNumber - 1) * pageSize;
     int limit = pageSize;
 
@@ -25,6 +28,20 @@ public class TranslationsService {
         limit, offset);
 
     return convert(translations);
+  }
+
+  private void validate(Integer pageNumber, Integer pageSize) {
+
+    if (pageNumber < 1) {
+
+      throw new ValidateException("pageNumber must be greater than 1");
+    }
+    if (pageSize < 1) {
+
+      throw new ValidateException("pageSize must be greater than 1");
+    }
+
+
   }
 
   private List<TranslationResponse> convert(List<Translations> translations) {
