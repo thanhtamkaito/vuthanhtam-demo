@@ -1,0 +1,6 @@
+FROM openjdk:17 as build
+ARG JAVA_DIR=./jar
+COPY   ${JAVA_DIR}/app-18080.jar .
+EXPOSE 18081
+ENTRYPOINT ["java","-jar","app-18080.jar"]
+
