@@ -8,13 +8,27 @@ services:
       - batch-service
     ports:
       - 5001:18080
+    volumes:
+      - db-data:/home/ubuntu/rawdata
     restart: on-failure
 
   # Retrieves the temperature
   batch-service:
     image: batch-app
     container_name: batch-service
+    volumes:
+      - db-data:/home/
     ports:
       - 5002:18081
     restart: on-failure
+    volumes:
+      - db-data:/home/ubuntu/rawdata
 
+volumes:
+  db-data:
+    driver: local
+    driver_opts:
+      #size: "10GiB"
+      type: none
+      device: /home/ubuntu/rawdata
+      o: bind
