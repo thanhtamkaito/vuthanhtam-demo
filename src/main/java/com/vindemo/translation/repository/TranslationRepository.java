@@ -10,9 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface TranslationRepository extends JpaRepository<Translations, Integer> {
 
 
-  @Query(value = "SELECT id_eng, text_eng, audio_url, id_vie, text_vie "
-      + "FROM translation "
-      + "ORDER BY id_eng "
-      + "LIMIT ?1 OFFSET ?2", nativeQuery = true)
+  @Query(value = "SELECT  id, id_eng ,text_eng , audio_url , id_vie , text_vie  FROM translations LIMIT ?1 OFFSET ?2", nativeQuery = true)
   List<Translations> findTranslationsWithLimitAndOffset(Integer limitValue, Integer offsetValue);
 }

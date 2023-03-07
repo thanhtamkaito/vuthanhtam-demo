@@ -4,6 +4,8 @@ import com.vindemo.translation.entity.Translations;
 import com.vindemo.translation.repository.TranslationRepository;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,8 @@ public class CsvImporter {
   @Transactional
   public void importCsv() throws Exception {
 
+    List<Translations> translationsList = new ArrayList<>();
+
     try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
       String line;
       while ((line = br.readLine()) != null) {
@@ -33,9 +37,13 @@ public class CsvImporter {
         translation.setIdVie(Integer.parseInt(fields[3]));
         translation.setTextVie(fields[4]);
 
-        translationRepository.save(translation);
+        translationsList.add(translation);
+
+//        translationRepository.save(translation);
       }
     }
+
+    translationRepository.saveAll(translationsList);
 
 
   }

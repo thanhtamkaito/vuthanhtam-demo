@@ -1,7 +1,6 @@
 package com.vindemo.translation.service.translation;
 
 
-import com.vindemo.translation.dto.request.TranslationRequest;
 import com.vindemo.translation.dto.response.TranslationResponse;
 import com.vindemo.translation.entity.Translations;
 import com.vindemo.translation.repository.TranslationRepository;
@@ -17,11 +16,13 @@ public class TranslationsService {
   @Autowired
   TranslationRepository translationRepository;
 
-  public List<TranslationResponse> translationResponses(TranslationRequest request) {
+  public List<TranslationResponse> translationResponses(Integer pageNumber, Integer pageSize) {
+
+    int offset = (pageNumber - 1) * pageSize;
+    int limit = pageSize;
 
     List<Translations> translations = translationRepository.findTranslationsWithLimitAndOffset(
-        request.getPageNumber(),
-        request.getPageSize());
+        limit, offset);
 
     return convert(translations);
   }
