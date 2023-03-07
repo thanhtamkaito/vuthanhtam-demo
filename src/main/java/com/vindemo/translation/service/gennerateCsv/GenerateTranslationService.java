@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,13 +18,17 @@ public class GenerateTranslationService {
 
   private static final Logger logger = LoggerFactory.getLogger(GenerateTranslationService.class);
 
-  private final String SENTENCE_PATH = "F://vinTest/data/CSV-02/sentences.csv";
+  @Value("${file.config.properties.sentences}")
+  private String SENTENCE_PATH;
 
-  private final String SENTENCE_WITH_AUDIO_PATH = "F://vinTest/data/CSV-02/sentences_with_audio.csv";
+  @Value("${file.config.properties.sentences_with_audio}")
+  private String SENTENCE_WITH_AUDIO_PATH;
 
-  private final String LINKS_PATH = "F://vinTest/data/CSV-02/links.csv";
+  @Value("${file.config.properties.links}")
+  private String LINKS_PATH;
 
-  private final String OUTPUT_PATH = "F://vinTest/data/CSV-02/translation.csv";
+  @Value("${file.config.properties.translation}")
+  private String OUTPUT_PATH;
 
   public void generateTranslation() throws IOException {
 

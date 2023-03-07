@@ -7,13 +7,15 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class CsvImporter {
 
-  private static final String CSV_FILE_PATH = "F://vinTest/data/CSV-02/translation.csv";
+  @Value("${file.config.properties.translation}")
+  private static String CSV_FILE_PATH;
 
   @Autowired
   private TranslationRepository translationRepository;
