@@ -3,13 +3,14 @@
 **Folder structure :** 
       
 ├── gennerateCsv <br>
-│    GenerateTranslationService.java  --->   Generate
+│    GenerateTranslationService.java <br> (https://github.com/thanhtamkaito/vuthanhtam-demo/blob/master/src/main/java/com/vindemo/translation/service/gennerateCsv/GenerateTranslationService.java) <br> --->   Generate
 English-Vietnamese translation csv file <br>
 ├── importcsv <br>
-│    ImportTranslationService.java  ---> Import translation csv file to PostgreSQL <br>
+│    ImportTranslationService.java  <br>  https://github.com/thanhtamkaito/vuthanhtam-demo/blob/master/src/main/java/com/vindemo/translation/framework/common/CsvImporter.java  <br>---> Import translation csv file to PostgreSQL <br>
 └── translation  <br>
-     TranslationsService.java --->  public API service <br> <br>
- **tools/dev-app -->  Development System with Docker**
+     TranslationsService.java <br>
+     https://github.com/thanhtamkaito/vuthanhtam-demo/blob/master/src/main/java/com/vindemo/translation/service/translation/TranslationsService.java <br>--->  public API service <br> <br>
+ **tools/dev-app  -->  Development System with Docker** <br>--> https://github.com/thanhtamkaito/vuthanhtam-demo/tree/master/tools/dev-app
 
 **How to use :** 
 
