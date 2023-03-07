@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "translations")
 public class Translations {
 
   @Id
@@ -16,14 +18,14 @@ public class Translations {
 
   private Integer id;
 
-  private int idEng;
+  private Integer idEng;
 
   @Column(columnDefinition = "text")
   private String textEng;
 
   private String audioUrl;
 
-  private int idVie;
+  private Integer idVie;
 
   @Column(columnDefinition = "text")
   private String textVie;

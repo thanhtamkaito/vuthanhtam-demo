@@ -1,4 +1,4 @@
-package com.vindemo.translation.controller.genneratecsv;
+package com.vindemo.translation.controller.importcsv;
 
 import com.vindemo.translation.service.importcsv.ImportTranslationService;
 import java.io.IOException;
