@@ -18,7 +18,7 @@ English-Vietnamese translation csv file <br>
 English-Vietnamese translation csv file
 
 
-+ Call API: http://thanhtam-hust.tech:5002/import   to Import translation csv file to PostgreSQL
++ Call API: http://thanhtam-hust.tech/import   to Import translation csv file to PostgreSQL
 
 + Call API: http://thanhtam-hust.tech/api/translations?page_number=5&page_size=10     to get data translate
 
