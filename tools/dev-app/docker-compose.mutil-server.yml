@@ -1,6 +1,6 @@
 version: '3'
 services:
-  # generates weather reports
+
   app-service:
     image: service-app
     container_name: app-service
@@ -12,7 +12,7 @@ services:
       - db-data:/home/ubuntu/rawdata
     restart: on-failure
 
-  # Retrieves the temperature
+
   batch-service:
     image: batch-app
     container_name: batch-service
